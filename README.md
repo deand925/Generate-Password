@@ -10,6 +10,11 @@ Created an user application that generates a random password based on user-selec
 
 ## Images
 
+<img src="images/Screen Shot 2022-05-23 at 1.36.09 PM.png">
+
+<img src="images/Screen Shot 2022-05-23 at 1.36.38 PM.png">
+
+<img src="images/Screen Shot 2022-05-23 at 1.36.52 PM.png">
 
 
 ## Contact Info
