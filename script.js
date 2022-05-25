@@ -6,46 +6,50 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 // Array of numeric characters to be included in password
 var hasNumeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-// Array of confirmed information
-var gatherCharacters = []
+var gatherContent = []
 
-// Start of generatePassword Function
 function generatePassword() {
-    var characterLength = parseInt(prompt("How many charaters do you want your password to be?"))
-    if (characterLength < 8 || characterLength > 128) {
-        alert("password must be atleast 8 characters in length and under 128 charters total")
-        return null;
-    }
-
-    // Start of Confirm Statements
-    var confirmedSpecialCharacter = confirm("Please confirm you want special charaters");
-    var confirmedUpperCaseCharacter = confirm("Please confirm you want upper case letters");
-    var confirmedLowerCaseCharacter = confirm("Please confirm you want lower case letters");
-    var confirmedNumbericCharacters = confirm("Please confirm you want numeric characters");
-    // End of Confirm Statements
-
-    if (confirmedUpperCase === false || confirmedLowerCase === false || confirmedNumeric === false || confirmedSpecialCharacter) {
-        alert("Password does not meet authentication requirements");
+  var passwordLength = parseInt(prompt("How many characters would you like your password to be?"))
+  
+  if(Number.isNaN(passwordLength)){
+    alert('You have to type a number');
     return null;
+  }
+  
+  if (passwordLength < 8 || passwordLength > 128) {
+  alert("Password needs to be atleast 8 characters long and under 128 characters")
+  return null;
 }
-if (specialCharater) {
-    gatherCharacters = gatherCharacters.concat(confirmedSpecialCharacter)
-}
-if (upperCaseCharacter) {
-    gatherCharacters = gatherCharacters.concat(confirmedUpperCase)
-}
-if (lowerCaseCharacter) {
-    gatherCharacters = gatherCharacters.concat(confirmedLowerCase)
-}
-if (numericCharacter) {
-    gatherCharacters = gatherCharacters.concat(confirmedNumeric)
-}
-var characterResults = [];
-for (var i = 0; i < characterLength; i++) {
-    var randomIndex = Math.floor(Math.random() * gatherCharacters.length) // 0 - 10
-    characterResults.push(gatherCharacters[randomIndex]) // gatherCharacters = ["0", "1", "A", "B"] // ["B", "0"]
-}
-return characterResults();
+
+var confirmUpperCase = confirm("Do you wanter upper case characters?")
+var confirmLowerCase = confirm("Do you want lower caser characters?")
+var confirmSpecial = confirm("Do you want special characters?")
+var confirmNumeric = confirm("Do you want numeric values?")
+
+    if (confirmUpperCase === false && confirmLowerCase === false && confirmSpecial === false && confirmNumeric === false) {
+        alert("Password not meet criteria")
+        return null;
+      }
+      
+      if (confirmUpperCase) {
+        gatherContent = gatherContent.concat(upperCase)
+      }
+      if (confirmLowerCase) {
+        gatherContent = gatherContent.concat(lowerCase)
+      }
+      if (confirmSpecial) {
+        gatherContent = gatherContent.concat(specialCharacter)
+      }
+      if (confirmNumeric) {
+        gatherContent = gatherContent.concat(hasNumeric)
+      }
+
+    var results = [];
+    for (var i = 0; i < passwordLength; i++) {
+        var randomIndex = Math.floor(Math.random() * gatherContent.length);
+        results.push(gatherContent[randomIndex]);
+    }
+    return results.join("")
 }
 // End of generatePassword Function
 
